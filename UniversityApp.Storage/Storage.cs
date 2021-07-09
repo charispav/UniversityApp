@@ -2,38 +2,28 @@
 using System.IO;
 using System.Web.Script.Serialization;
 using UniversityApp.Model;
-
+using System.Data;
 namespace UniversityApp.Storage {
-    public class Storage {
-        /*
-        private void SerializeToJSON() {
+    public static class Storage<T> where T : class {
+        
+        public static void SerializeToJSON(T ViewData) {
 
-            JavaScriptSerializer r = new JavaScriptSerializer();
-
-            ViewData = r.Deserialize<University>(File.ReadAllText("Data.json"));
-
-            foreach (Student a in ViewData.Students) {
-                list1.Items.Add(a.Name + " " + a.Surname);
-            }
-
-            for (int i = 0; i < ViewData.Courses.Count - 1; i++) {
-
-                listBox1.Items.Add(ViewData.Courses[i].Code + "--" + ViewData.Courses[i].Subject);
-            }
-
-
-            foreach (Professor k in ViewData.Professors) {
-                list3.Items.Add(string.Format("{0}  {1}", k.Name, k.Surname));
-            }
+            JavaScriptSerializer saveSerializer = Serializer();
+            File.WriteAllText($"{typeof(T).Name}Data.json", saveSerializer.Serialize(ViewData));
         }
 
-        private void DeserializeFromJSON(object sender, EventArgs e) {
-            JavaScriptSerializer save_Serializer = new JavaScriptSerializer();
+        public static T DeserializeFromJSON() {
 
-            File.WriteAllText("Data.json", save_Serializer.Serialize(ViewData));
+            JavaScriptSerializer loadSerializer = Serializer();
+
+            return loadSerializer.Deserialize<T>(File.ReadAllText($"{typeof(T).Name}Data.json"));
         }
-        */
+
+        private static JavaScriptSerializer Serializer() {
+
+            return new JavaScriptSerializer();
+        }
+       
     }
 
 }
-

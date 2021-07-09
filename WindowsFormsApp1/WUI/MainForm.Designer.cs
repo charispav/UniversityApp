@@ -24,224 +24,269 @@ namespace WindowsFormsApp1.WUI {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.ctrlSchedule = new System.Windows.Forms.ListBox();
-            this.list3 = new System.Windows.Forms.ListBox();
-            this.list1 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.ctrlExit = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.initializeDedomenaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addToScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.loadDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblCourse = new System.Windows.Forms.Label();
+            this.lblStudent = new System.Windows.Forms.Label();
+            this.lblProfessor = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ctrlCourses = new System.Windows.Forms.DataGridView();
+            this.ctrlStudents = new System.Windows.Forms.DataGridView();
+            this.virtualServerModeSource1 = new DevExpress.Data.VirtualServerModeSource(this.components);
+            this.ctrlProfessors = new System.Windows.Forms.DataGridView();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctrlSchedules = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlSchedules)).BeginInit();
             this.SuspendLayout();
             // 
-            // ctrlSchedule
+            // btnAdd
             // 
-            this.ctrlSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.ctrlSchedule.FormattingEnabled = true;
-            this.ctrlSchedule.ItemHeight = 25;
-            this.ctrlSchedule.Location = new System.Drawing.Point(56, 460);
-            this.ctrlSchedule.Name = "ctrlSchedule";
-            this.ctrlSchedule.Size = new System.Drawing.Size(1059, 179);
-            this.ctrlSchedule.TabIndex = 7;
+            this.btnAdd.Location = new System.Drawing.Point(522, 532);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(143, 32);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // list3
+            // btnRemove
             // 
-            this.list3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.list3.FormattingEnabled = true;
-            this.list3.ItemHeight = 21;
-            this.list3.Location = new System.Drawing.Point(440, 106);
-            this.list3.Name = "list3";
-            this.list3.Size = new System.Drawing.Size(308, 67);
-            this.list3.TabIndex = 6;
+            this.btnRemove.Location = new System.Drawing.Point(997, 532);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(143, 32);
+            this.btnRemove.TabIndex = 9;
+            this.btnRemove.Text = "Remove Selected";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
-            // list1
+            // dateTimePicker
             // 
-            this.list1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.list1.FormattingEnabled = true;
-            this.list1.ItemHeight = 21;
-            this.list1.Location = new System.Drawing.Point(24, 216);
-            this.list1.Name = "list1";
-            this.list1.Size = new System.Drawing.Size(400, 88);
-            this.list1.TabIndex = 5;
+            this.dateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker.Location = new System.Drawing.Point(488, 476);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(195, 27);
+            this.dateTimePicker.TabIndex = 10;
             // 
-            // listBox1
+            // btnLoad
             // 
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(24, 106);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(400, 88);
-            this.listBox1.TabIndex = 4;
+            this.btnLoad.Location = new System.Drawing.Point(920, 789);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(143, 32);
+            this.btnLoad.TabIndex = 11;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // ctrlExit
+            // btnSave
             // 
-            this.ctrlExit.Location = new System.Drawing.Point(468, 256);
-            this.ctrlExit.Name = "ctrlExit";
-            this.ctrlExit.Size = new System.Drawing.Size(143, 32);
-            this.ctrlExit.TabIndex = 8;
-            this.ctrlExit.Text = "Add";
-            this.ctrlExit.UseVisualStyleBackColor = true;
-            this.ctrlExit.Click += new System.EventHandler(this.ctrlExit_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(56, 422);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(143, 32);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Remove";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(448, 216);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 10;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(505, 645);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(143, 32);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "Load";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(654, 645);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(143, 32);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "Save";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.btnSave.Location = new System.Drawing.Point(1069, 789);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(143, 32);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.label6.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label6.Location = new System.Drawing.Point(21, 54);
+            this.label6.Location = new System.Drawing.Point(12, 36);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(426, 42);
+            this.label6.Size = new System.Drawing.Size(569, 59);
             this.label6.TabIndex = 13;
             this.label6.Text = "University Courses Scheduler";
             // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(610, 57);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(187, 32);
-            this.button11.TabIndex = 14;
-            this.button11.Text = "Initialize (only run once!)";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.mainToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(809, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1224, 28);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.initializeDedomenaToolStripMenuItem,
-            this.toolStripMenuItem1,
             this.addToScheduleToolStripMenuItem,
-            this.toolStripMenuItem2,
+            this.toolStripSeparator1,
             this.loadDataToolStripMenuItem,
-            this.saveDataToolStripMenuItem});
+            this.saveDataToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.exitToolStripMenuItem});
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.mainToolStripMenuItem.Text = "Main";
-            // 
-            // initializeDedomenaToolStripMenuItem
-            // 
-            this.initializeDedomenaToolStripMenuItem.Name = "initializeDedomenaToolStripMenuItem";
-            this.initializeDedomenaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.initializeDedomenaToolStripMenuItem.Text = "Initialize Dedomena";
-            this.initializeDedomenaToolStripMenuItem.Click += new System.EventHandler(this.initializeDedomenaToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.mainToolStripMenuItem.Text = "File";
             // 
             // addToScheduleToolStripMenuItem
             // 
             this.addToScheduleToolStripMenuItem.Name = "addToScheduleToolStripMenuItem";
-            this.addToScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToScheduleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addToScheduleToolStripMenuItem.Text = "Add To Schedule...";
             this.addToScheduleToolStripMenuItem.Click += new System.EventHandler(this.addToScheduleToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(221, 6);
             // 
             // loadDataToolStripMenuItem
             // 
             this.loadDataToolStripMenuItem.Name = "loadDataToolStripMenuItem";
-            this.loadDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loadDataToolStripMenuItem.Text = "Load Data";
             this.loadDataToolStripMenuItem.Click += new System.EventHandler(this.loadDataToolStripMenuItem_Click);
             // 
             // saveDataToolStripMenuItem
             // 
             this.saveDataToolStripMenuItem.Name = "saveDataToolStripMenuItem";
-            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveDataToolStripMenuItem.Text = "Save Data";
             this.saveDataToolStripMenuItem.Click += new System.EventHandler(this.saveDataToolStripMenuItem_Click);
+            // 
+            // lblCourse
+            // 
+            this.lblCourse.AutoSize = true;
+            this.lblCourse.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblCourse.Location = new System.Drawing.Point(20, 144);
+            this.lblCourse.Name = "lblCourse";
+            this.lblCourse.Size = new System.Drawing.Size(129, 23);
+            this.lblCourse.TabIndex = 16;
+            this.lblCourse.Text = "Choose Course:";
+            // 
+            // lblStudent
+            // 
+            this.lblStudent.AutoSize = true;
+            this.lblStudent.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblStudent.Location = new System.Drawing.Point(425, 144);
+            this.lblStudent.Name = "lblStudent";
+            this.lblStudent.Size = new System.Drawing.Size(135, 23);
+            this.lblStudent.TabIndex = 17;
+            this.lblStudent.Text = "Choose Student:";
+            // 
+            // lblProfessor
+            // 
+            this.lblProfessor.AutoSize = true;
+            this.lblProfessor.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblProfessor.Location = new System.Drawing.Point(788, 144);
+            this.lblProfessor.Name = "lblProfessor";
+            this.lblProfessor.Size = new System.Drawing.Size(146, 23);
+            this.lblProfessor.TabIndex = 18;
+            this.lblProfessor.Text = "Choose Professor:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label10.Location = new System.Drawing.Point(495, 450);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(188, 23);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Choose Date and Time:";
+            // 
+            // ctrlCourses
+            // 
+            this.ctrlCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlCourses.Location = new System.Drawing.Point(24, 185);
+            this.ctrlCourses.Name = "ctrlCourses";
+            this.ctrlCourses.RowHeadersWidth = 51;
+            this.ctrlCourses.RowTemplate.Height = 24;
+            this.ctrlCourses.Size = new System.Drawing.Size(364, 244);
+            this.ctrlCourses.TabIndex = 21;
+            // 
+            // ctrlStudents
+            // 
+            this.ctrlStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlStudents.Location = new System.Drawing.Point(415, 185);
+            this.ctrlStudents.Name = "ctrlStudents";
+            this.ctrlStudents.RowHeadersWidth = 51;
+            this.ctrlStudents.RowTemplate.Height = 24;
+            this.ctrlStudents.Size = new System.Drawing.Size(352, 244);
+            this.ctrlStudents.TabIndex = 22;
+            // 
+            // ctrlProfessors
+            // 
+            this.ctrlProfessors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlProfessors.Location = new System.Drawing.Point(792, 185);
+            this.ctrlProfessors.Name = "ctrlProfessors";
+            this.ctrlProfessors.RowHeadersWidth = 51;
+            this.ctrlProfessors.RowTemplate.Height = 24;
+            this.ctrlProfessors.Size = new System.Drawing.Size(348, 244);
+            this.ctrlProfessors.TabIndex = 23;
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // DataForm1
+            // toolStripSeparator1
             // 
-            this.ClientSize = new System.Drawing.Size(809, 737);
-            this.Controls.Add(this.button11);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            // 
+            // ctrlSchedules
+            // 
+            this.ctrlSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlSchedules.Location = new System.Drawing.Point(22, 584);
+            this.ctrlSchedules.Name = "ctrlSchedules";
+            this.ctrlSchedules.RowHeadersWidth = 51;
+            this.ctrlSchedules.RowTemplate.Height = 24;
+            this.ctrlSchedules.Size = new System.Drawing.Size(1118, 180);
+            this.ctrlSchedules.TabIndex = 24;
+            // 
+            // MainForm
+            // 
+            this.ClientSize = new System.Drawing.Size(1224, 833);
+            this.Controls.Add(this.ctrlSchedules);
+            this.Controls.Add(this.ctrlProfessors);
+            this.Controls.Add(this.ctrlStudents);
+            this.Controls.Add(this.ctrlCourses);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lblProfessor);
+            this.Controls.Add(this.lblStudent);
+            this.Controls.Add(this.lblCourse);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.ctrlExit);
-            this.Controls.Add(this.ctrlSchedule);
-            this.Controls.Add(this.list3);
-            this.Controls.Add(this.list1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "DataForm1";
-            this.Load += new System.EventHandler(this.DataForm1_Load);
+            this.Name = "MainForm";
+            this.Text = "University Courses Scheduler Application";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlSchedules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,25 +311,28 @@ namespace WindowsFormsApp1.WUI {
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ListBox ctrlSchedule;
-        private System.Windows.Forms.ListBox list3;
-        private System.Windows.Forms.ListBox list1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button ctrlExit;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem initializeDedomenaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addToScheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem loadDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveDataToolStripMenuItem;
+        private System.Windows.Forms.Label lblCourse;
+        private System.Windows.Forms.Label lblStudent;
+        private System.Windows.Forms.Label lblProfessor;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView ctrlCourses;
+        private System.Windows.Forms.DataGridView ctrlStudents;
+        private DevExpress.Data.VirtualServerModeSource virtualServerModeSource1;
+        private System.Windows.Forms.DataGridView ctrlProfessors;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.DataGridView ctrlSchedules;
     }
 }

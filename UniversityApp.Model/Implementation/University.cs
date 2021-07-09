@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace UniversityApp.Model {
 
-    public class University  {
+    public class University {
 
-        public List<Student> Students { get; set; }
-        public List<Professor> Professors { get; set; }
-        public List<Course> Courses { get; set; }
-        public List<Schedule> Schedules { get; set; }
+        public ICollection<Student> Students { get; set; }
+        public ICollection<Professor> Professors { get; set; }
+        public ICollection<Course> Courses { get; set; }
+        public ICollection<Schedule> Schedules { get; set; }
 
         public University() {
             Students = new List<Student>();
@@ -19,14 +19,12 @@ namespace UniversityApp.Model {
             Courses = new List<Course>();
             Schedules = new List<Schedule>();
         }
-
+        /*
         public void run_once() {
 
 
-            // TODO: MUST IMPLEMENT ENUMERATION FOR CATEGORY ?
-
             Courses.Add( new Course() {
-                ID = Guid.NewGuid(), 
+                
                 Code = "01",
                 Subject = "Quantum Physics",
                 Category = CoursesCategoryEnum.Physics, 
@@ -34,7 +32,7 @@ namespace UniversityApp.Model {
             });
 
             Courses.Add(new Course() {
-                ID = Guid.NewGuid(),
+                
                 Code = "02",
                 Subject = "Electo-Dynamics",
                 Category = CoursesCategoryEnum.Physics, 
@@ -42,7 +40,7 @@ namespace UniversityApp.Model {
             });
 
             Courses.Add(new Course() {
-                ID = Guid.NewGuid(),
+                
                 Code = "03",
                 Subject = "Basic Chemistry",
                 Category = CoursesCategoryEnum.Chemistry, 
@@ -50,7 +48,7 @@ namespace UniversityApp.Model {
             });
 
             Courses.Add(new Course() {
-                ID = Guid.NewGuid(),
+                
                 Code = "04",
                 Subject = "Financial II",
                 Category = CoursesCategoryEnum.Financial, 
@@ -58,7 +56,7 @@ namespace UniversityApp.Model {
             });
 
             Courses.Add(new Course() {
-                ID = Guid.NewGuid(),
+                
                 Code = "05",
                 Subject = "Mathematics I",
                 Category = CoursesCategoryEnum.Mathematics, 
@@ -66,33 +64,31 @@ namespace UniversityApp.Model {
             });
 
             Students.Add(new Student() {
-                ID = Guid.NewGuid(),
+                
                 Name = "Fotis",
                 Surname = "Chrysoulas",
                 RegistrationNumber = "1234",
-                CoursesThatCanBeLearned = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Chemistry, CoursesCategoryEnum.Financial}
+                StudentCourses = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Chemistry, CoursesCategoryEnum.Financial}
             });
 
 
             Students.Add(new Student() {
-                ID = Guid.NewGuid(),
+                
                 Name = "Dimitris",
                 Surname = "Raptodimos",
                 RegistrationNumber = "1235",
-                CoursesThatCanBeLearned = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Physics, CoursesCategoryEnum.Financial } 
+                StudentCourses = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Physics, CoursesCategoryEnum.Financial } 
             });
 
             Professors.Add(new Professor() {
                 Name = "Maria",
                 Surname = "Papadopoulou",
-                Rank = "1"
+                Rank = "Assistant Professor"
             });
 
+        */
 
-        }
-
-        
     }
-
 }
+
 

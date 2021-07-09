@@ -49,7 +49,7 @@
     <Compile Include="Implementation\Schedule.cs" />
     <Compile Include="Implementation\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="University.cs" />
+    <Compile Include="Implementation\University.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

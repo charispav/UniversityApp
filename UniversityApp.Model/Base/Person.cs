@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UniversityApp.Model.Base {
-    public class Person {
+    public abstract class Person : Entity {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public Person(): base() {
+
+        }
+
     }
 }

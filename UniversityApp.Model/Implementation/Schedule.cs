@@ -1,15 +1,17 @@
 ﻿using System;
+using UniversityApp.Model.Base;
 
 namespace UniversityApp.Model {
-    public class Schedule {
+    public class Schedule : Entity {
 
-        public string ID { get; set; }
-        public string Student { get; set; }
-        public string Professor { get; set; }
-        public string Course { get; set; }
+        public Guid StudentID { get; set; }
+        public Guid ProfessorID { get; set; }
+        public Guid CourseID { get; set; }
         public DateTime Calendar { get; set; }
 
-       
+        public Schedule() : base() {
+                
+        }
     }
 
 }
