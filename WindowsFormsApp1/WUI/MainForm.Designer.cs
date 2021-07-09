@@ -1,6 +1,6 @@
 ﻿
 namespace WindowsFormsApp1.WUI {
-    partial class DataForm1 {
+    partial class MainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
