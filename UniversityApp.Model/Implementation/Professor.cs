@@ -10,7 +10,7 @@ namespace UniversityApp.Model {
         
         public short Age { get; set; }
         public string Rank { get; set; }
-        public List<CoursesCategoryEnum> ProfessorCourses { get; set; }
+        public ICollection<CoursesCategoryEnum> ProfessorCourses { get; set; }
 
         public Professor() : base() {
            
