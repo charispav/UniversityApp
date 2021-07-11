@@ -8,7 +8,7 @@ namespace UniversityApp.Model {
        
         public string RegistrationNumber { get; set; }
         public int Age { get; set; }
-        public ICollection<CoursesCategoryEnum> StudentCourses { get; set; }
+        public ICollection<CoursesCategoryEnum> PersonCourses { get; set; }
 
         public Student() : base() {
 

@@ -49,6 +49,7 @@ namespace WindowsFormsApp1.WUI {
             this.ctrlProfessors = new System.Windows.Forms.DataGridView();
             this.ctrlSchedules = new System.Windows.Forms.DataGridView();
             this.ctrlStudentCourses = new System.Windows.Forms.DataGridView();
+            this.ctrlProfessorCourses = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCourses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlStudents)).BeginInit();
@@ -56,26 +57,36 @@ namespace WindowsFormsApp1.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSchedules)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlStudentCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessorCourses)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(230, 529);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(143, 32);
+            this.btnAdd.Size = new System.Drawing.Size(158, 36);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(24, 546);
+            this.btnRemove.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(24, 539);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(143, 32);
+            this.btnRemove.Size = new System.Drawing.Size(152, 37);
             this.btnRemove.TabIndex = 9;
             this.btnRemove.Text = "Remove Selected";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             // 
             // dateTimePicker
             // 
@@ -89,29 +100,35 @@ namespace WindowsFormsApp1.WUI {
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(920, 789);
+            this.btnLoad.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnLoad.ForeColor = System.Drawing.Color.White;
+            this.btnLoad.Location = new System.Drawing.Point(883, 780);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(143, 32);
+            this.btnLoad.Size = new System.Drawing.Size(163, 41);
             this.btnLoad.TabIndex = 11;
             this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1069, 789);
+            this.btnSave.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(1052, 780);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(143, 32);
+            this.btnSave.Size = new System.Drawing.Size(160, 41);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label6.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label6.Location = new System.Drawing.Point(12, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(569, 59);
@@ -222,33 +239,53 @@ namespace WindowsFormsApp1.WUI {
             // 
             // ctrlCourses
             // 
+            this.ctrlCourses.AllowUserToAddRows = false;
+            this.ctrlCourses.AllowUserToOrderColumns = true;
             this.ctrlCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlCourses.Location = new System.Drawing.Point(24, 185);
+            this.ctrlCourses.MultiSelect = false;
             this.ctrlCourses.Name = "ctrlCourses";
+            this.ctrlCourses.ReadOnly = true;
             this.ctrlCourses.RowHeadersWidth = 51;
             this.ctrlCourses.RowTemplate.Height = 24;
+            this.ctrlCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctrlCourses.Size = new System.Drawing.Size(364, 244);
             this.ctrlCourses.TabIndex = 21;
             // 
             // ctrlStudents
             // 
+            this.ctrlStudents.AllowUserToAddRows = false;
+            this.ctrlStudents.AllowUserToDeleteRows = false;
+            this.ctrlStudents.AllowUserToOrderColumns = true;
             this.ctrlStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlStudents.Location = new System.Drawing.Point(415, 185);
+            this.ctrlStudents.MultiSelect = false;
             this.ctrlStudents.Name = "ctrlStudents";
+            this.ctrlStudents.ReadOnly = true;
             this.ctrlStudents.RowHeadersWidth = 51;
             this.ctrlStudents.RowTemplate.Height = 24;
+            this.ctrlStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctrlStudents.Size = new System.Drawing.Size(352, 244);
             this.ctrlStudents.TabIndex = 22;
+            this.ctrlStudents.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ctrlStudents_DataBindingComplete);
+            this.ctrlStudents.SelectionChanged += new System.EventHandler(this.ctrlStudents_SelectionChanged);
             // 
             // ctrlProfessors
             // 
+            this.ctrlProfessors.AllowUserToAddRows = false;
+            this.ctrlProfessors.AllowUserToOrderColumns = true;
             this.ctrlProfessors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlProfessors.Location = new System.Drawing.Point(792, 185);
+            this.ctrlProfessors.MultiSelect = false;
             this.ctrlProfessors.Name = "ctrlProfessors";
+            this.ctrlProfessors.ReadOnly = true;
             this.ctrlProfessors.RowHeadersWidth = 51;
             this.ctrlProfessors.RowTemplate.Height = 24;
+            this.ctrlProfessors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctrlProfessors.Size = new System.Drawing.Size(348, 244);
             this.ctrlProfessors.TabIndex = 23;
+            this.ctrlProfessors.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ctrlProfessors_DataBindingComplete);
+            this.ctrlProfessors.SelectionChanged += new System.EventHandler(this.ctrlProfessors_SelectionChanged);
             // 
             // ctrlSchedules
             // 
@@ -262,17 +299,34 @@ namespace WindowsFormsApp1.WUI {
             // 
             // ctrlStudentCourses
             // 
+            this.ctrlStudentCourses.AllowUserToAddRows = false;
+            this.ctrlStudentCourses.AllowUserToDeleteRows = false;
             this.ctrlStudentCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlStudentCourses.Location = new System.Drawing.Point(573, 447);
             this.ctrlStudentCourses.Name = "ctrlStudentCourses";
+            this.ctrlStudentCourses.ReadOnly = true;
             this.ctrlStudentCourses.RowHeadersWidth = 51;
             this.ctrlStudentCourses.RowTemplate.Height = 24;
             this.ctrlStudentCourses.Size = new System.Drawing.Size(194, 129);
             this.ctrlStudentCourses.TabIndex = 25;
             // 
+            // ctrlProfessorCourses
+            // 
+            this.ctrlProfessorCourses.AllowUserToAddRows = false;
+            this.ctrlProfessorCourses.AllowUserToDeleteRows = false;
+            this.ctrlProfessorCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlProfessorCourses.Location = new System.Drawing.Point(946, 447);
+            this.ctrlProfessorCourses.Name = "ctrlProfessorCourses";
+            this.ctrlProfessorCourses.ReadOnly = true;
+            this.ctrlProfessorCourses.RowHeadersWidth = 51;
+            this.ctrlProfessorCourses.RowTemplate.Height = 24;
+            this.ctrlProfessorCourses.Size = new System.Drawing.Size(194, 129);
+            this.ctrlProfessorCourses.TabIndex = 26;
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(1224, 833);
+            this.Controls.Add(this.ctrlProfessorCourses);
             this.Controls.Add(this.ctrlStudentCourses);
             this.Controls.Add(this.ctrlSchedules);
             this.Controls.Add(this.ctrlProfessors);
@@ -301,6 +355,7 @@ namespace WindowsFormsApp1.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlSchedules)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlStudentCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlProfessorCourses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,5 +404,6 @@ namespace WindowsFormsApp1.WUI {
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridView ctrlSchedules;
         private System.Windows.Forms.DataGridView ctrlStudentCourses;
+        private System.Windows.Forms.DataGridView ctrlProfessorCourses;
     }
 }
