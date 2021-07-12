@@ -11,6 +11,7 @@ using UniversityApp.Storage;
 using System.Globalization;
 using System.Reflection;
 using System.ComponentModel;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1.WUI {
 
@@ -25,6 +26,7 @@ namespace WindowsFormsApp1.WUI {
         private void MainForm_Load(object sender, EventArgs e) {
 
             LoadData();
+
         }
         private void loadDataToolStripMenuItem_Click(object sender, EventArgs e) {
             LoadData();
@@ -48,33 +50,46 @@ namespace WindowsFormsApp1.WUI {
             Guid selectedStudentID = (Guid)ctrlStudents.SelectedRows[0].Cells["ID"].Value;
             Guid selectedCourseID = (Guid)ctrlCourses.SelectedRows[0].Cells["ID"].Value;
             DateTime selectedDateTime = dateTimePicker.Value;
-            //if (ConditionsCheched(ViewData, selectedStudentID, selectedProfessorID, selectedCourseID, selectedDateTime)) {
-            ViewData.Schedules.Add(new Schedule() {
-                CourseID = selectedProfessorID,
-                StudentID = selectedStudentID,
-                ProfessorID = selectedCourseID,
-                Calendar = selectedDateTime
-            });
-            LoadDataIntoGrid<Schedule>();
-            // }
-            // else {
-            ///
+            if (ConditionsCheched(ViewData, selectedStudentID, selectedProfessorID, selectedCourseID, selectedDateTime)) {
+                ViewData.Schedules.Add(new Schedule() {
+                    CourseID = selectedCourseID,
+                    StudentID = selectedStudentID,
+                    ProfessorID = selectedProfessorID,
+                    Calendar = selectedDateTime
+                });
 
-            //}
+                LoadDataIntoGrid<Schedule>();
+            }
         }
         private void SaveData() {
-            Storage<University>.SerializeToJSON(ViewData);
+            try {
+                Storage<University>.SerializeToJSON(ViewData);
+            }
+            catch (Exception) {
+                MessageBox.Show("Error with data writing!","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         private void LoadData() {
-            GetViewData();
+            try {
+                GetViewData();
+            }
+            catch (Exception) {
+                MessageBox.Show("Error with data reading!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             LoadDataIntoGrid<Student>();
             LoadDataIntoGrid<Professor>();
             LoadDataIntoGrid<Course>();
         }
 
+        private void GetViewData() {
+            ViewData = Storage<University>.DeserializeFromJSON();
+        }
+
         private void LoadDataIntoGrid<T>() where T : class {
             BindingSource bindingSource = new BindingSource();
-            
+
             if (typeof(T) == typeof(Student)) {
                 bindingSource.DataSource = ViewData.Students;
                 ctrlStudents.DataSource = bindingSource;
@@ -93,29 +108,32 @@ namespace WindowsFormsApp1.WUI {
             }
             else if (typeof(T) == typeof(Schedule)) {
                 bindingSource.DataSource = from schedule in ViewData.Schedules
-                    join student in ViewData.Students on schedule.StudentID equals student.ID
-                    join professor in ViewData.Professors on schedule.ProfessorID equals professor.ID
-                    join course in ViewData.Courses on schedule.CourseID equals course.ID
-                    select new {
-                        Date = schedule.Calendar,
-                        ProfessorName = professor.Name,
-                        ProfessorSurname = professor.Surname,
-                        StudentName = student.Name,
-                        StudentSurname = student.Surname,
-                        Code = course.Code,
-                        Subject = course.Subject,
-                        ID = schedule.ID,
-                        };
+                                           join student in ViewData.Students on schedule.StudentID equals student.ID
+                                           join professor in ViewData.Professors on schedule.ProfessorID equals professor.ID
+                                           join course in ViewData.Courses on schedule.CourseID equals course.ID
+                                           select new {
+                                               Date = schedule.Calendar,
+                                               StudentName = student.Name,
+                                               StudentSurname = student.Surname,
+                                               ProfessorName = professor.Name,
+                                               ProfessorSurname = professor.Surname,
+                                               Subject = course.Subject,
+                                               Category = course.Category,
+                                               ID = schedule.ID
+                                           };
+
                 ctrlSchedules.DataSource = bindingSource;
-            
+                AdjustGridView(ctrlSchedules);
             }
 
         }
 
         private void LoadScheduleData() {
-            //if (ViewData.Schedules == null)
             GetViewData();
-            LoadDataIntoGrid<Schedule>();
+            if (ViewData.Schedules.Count() > 0)
+                LoadDataIntoGrid<Schedule>();
+            else
+                MessageBox.Show("No Schedule Data to Load!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
 
@@ -132,46 +150,80 @@ namespace WindowsFormsApp1.WUI {
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
-        private void GetViewData() {
-            ViewData = Storage<University>.DeserializeFromJSON();
-        }
+       
         private bool ConditionsCheched(University university, Guid studentID, Guid professorID, Guid courseID, DateTime calendar) {
-            //Conditions:
-            bool professorAndStudentSameDateAndHour = false;
-            bool studentMaxThreeCoursesPerDay = false;
-            bool professorMaxFourCoursesPerDay = false;
-            bool professorMaxFourtyCoursesPerWeek = false;
-            bool professorCanTeachCourse = false;
-            bool studentCanLearnCourse = false;
-            bool sameProfessorInDifferentCourseSameHour = false;
-            bool sameStudentInDifferentCourseSameHour = false;
-            bool differentProfessorsForTheSameCourseGivenHour = false;
-            bool sameCourseSameHour = false;
-            bool sameAllElements = false;
 
-            var QueryFindSameStudentProfessorHour = from schedule in university.Schedules
-                                                    where schedule.StudentID == studentID
-                                                        && schedule.ProfessorID == professorID
-                                                        && schedule.Calendar.Hour == calendar.Hour
-                                                    select schedule.ID;
-            professorAndStudentSameDateAndHour = (QueryFindSameStudentProfessorHour.Count() == 0);
-            if (!professorAndStudentSameDateAndHour) return false;
+            if (!CheckSameAllElements(university, studentID, professorID, courseID, calendar)) {
+                MessageBox.Show(Resources.DuplicateRecordErrorString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckForProfessorAndStudentSameDateAndHour(university, studentID, professorID, calendar)) {
+                MessageBox.Show("Invalid Entry: Same Professor and Student for this hour is given!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckStudentMaxThreeCoursesPerDay(university, studentID, calendar)) {
+                MessageBox.Show("Invalid Entry: This student already attains three courses for the given day!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckProfessorMaxFourCoursesPerDay(university, professorID, calendar)) {
+                MessageBox.Show("Invalid Entry: This professor already teaches four courses for the given day!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckProfessorMaxFourtyCoursesPerWeek(university, professorID, calendar)) {
+                MessageBox.Show("Invalid Entry: This professor already teaches fourty courses for this week!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckProfessorCanTeachCourse(university, courseID, professorID)) {
+                MessageBox.Show("Invalid Entry: This professor cannot teach this course!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!CheckStudentCanLearnCourse(university, courseID, studentID)) {
+                MessageBox.Show("Invalid Entry: This student cannot learn this course!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            MessageBox.Show("Schedule added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            return true;
+        }
+
+        private bool CheckForProfessorAndStudentSameDateAndHour(University university, Guid studentID, Guid professorID, DateTime calendar) {
+
+            var QueryProfessorAndStudentSameDateAndHour = from schedule in university.Schedules
+                                                          where schedule.StudentID == studentID
+                                                              && schedule.ProfessorID == professorID
+                                                              && schedule.Calendar == calendar
+                                                          select schedule.ID;
+
+            return QueryProfessorAndStudentSameDateAndHour.Count() == 0;
+        }
+
+        private bool CheckStudentMaxThreeCoursesPerDay(University university, Guid studentID, DateTime calendar) {
 
             var QueryStudentMaxThreeCoursesPerDay = from schedule in university.Schedules
                                                     where schedule.StudentID == studentID
                                                         && schedule.Calendar.Day == calendar.Day
                                                     select schedule.ID;
-            studentMaxThreeCoursesPerDay = (QueryStudentMaxThreeCoursesPerDay.Count() < 3);
-            if (!studentMaxThreeCoursesPerDay) return false;
+
+            return QueryStudentMaxThreeCoursesPerDay.Count() < 3;
+        }
+
+        private bool CheckProfessorMaxFourCoursesPerDay(University university, Guid professorID, DateTime calendar) {
 
             var QueryProfessorMaxFourCoursesPerDay = from schedule in university.Schedules
                                                      where schedule.ProfessorID == professorID
                                                         && schedule.Calendar.Day == calendar.Day
                                                      select schedule.ID;
-            professorMaxFourCoursesPerDay = (QueryProfessorMaxFourCoursesPerDay.Count() < 4);
-            if (!professorMaxFourCoursesPerDay) return false;
 
-            //Calendar Settings
+            return QueryProfessorMaxFourCoursesPerDay.Count() < 4;
+
+        }
+
+        private bool CheckProfessorMaxFourtyCoursesPerWeek(University university, Guid professorID, DateTime calendar) {
             CultureInfo cultureInfo = new CultureInfo("el-GR");
             Calendar calendarInfo = cultureInfo.Calendar;
             CalendarWeekRule calendarWeekRule = cultureInfo.DateTimeFormat.CalendarWeekRule;
@@ -182,34 +234,53 @@ namespace WindowsFormsApp1.WUI {
                                                            && calendarInfo.GetWeekOfYear(schedule.Calendar, calendarWeekRule, FirstDOW)
                                                            == calendarInfo.GetWeekOfYear(calendar, calendarWeekRule, FirstDOW)
                                                         select schedule.ID;
-            professorMaxFourtyCoursesPerWeek = (QueryProfessorMaxFourtyCoursesPerWeek.Count() < 40);
-            if (!professorMaxFourtyCoursesPerWeek) return false;
 
+            return QueryProfessorMaxFourtyCoursesPerWeek.Count() < 40;
+        }
 
-            var courseCategory = (from course in university.Courses
-                                  where course.ID == courseID
-                                  select course.Category).First();
+        private CoursesCategoryEnum GetCourseCategory(University university, Guid courseID) {
+            CoursesCategoryEnum courseCategory = (CoursesCategoryEnum)(from course in university.Courses
+                                                                       where course.ID == courseID
+                                                                       select course.Category).First();
+            return courseCategory;
+        }
+        private bool CheckProfessorCanTeachCourse(University university, Guid courseID, Guid professorID) {
+
+            CoursesCategoryEnum courseCategory = GetCourseCategory(university, courseID);
             var QueryProfessorCanTeachCourse = from professor in university.Professors
                                                where professor.ID == professorID
                                                   && professor.PersonCourses.Contains(courseCategory)
                                                select professor.ID;
-            professorCanTeachCourse = (QueryProfessorCanTeachCourse.Count() > 0);
-            if (!professorCanTeachCourse) return false;
+            return QueryProfessorCanTeachCourse.Count() > 0;
+        }
 
+        private bool CheckStudentCanLearnCourse(University university, Guid courseID, Guid studentID) {
+
+            CoursesCategoryEnum courseCategory = GetCourseCategory(university, courseID);
             var QueryStudentCanLearnCourse = from student in university.Students
                                              where student.ID == studentID
                                                  && student.PersonCourses.Contains(courseCategory)
                                              select student.ID;
-            studentCanLearnCourse = (QueryStudentCanLearnCourse.Count() > 0);
-            if (!studentCanLearnCourse) return false;
 
-            //TODO: Rest Queries
-
-
-            return true;
+            return QueryStudentCanLearnCourse.Count() > 0;
         }
 
+        private bool CheckSameAllElements(University university, Guid studentID, Guid professorID, Guid courseID, DateTime calendar) {
+
+            var QuerySameAllElements = from schedule in university.Schedules
+                                       where schedule.StudentID == studentID
+                                       && schedule.ProfessorID == professorID
+                                       && schedule.CourseID == courseID
+                                       && schedule.Calendar == calendar
+                                       select schedule.ID;
+
+            return QuerySameAllElements.Count() == 0;
+        }
+
+
+
         private void AdjustGridView(DataGridView dataGridView) {
+
             if (dataGridView == ctrlStudentCourses) {
                 dataGridView.Columns["Courses"].HeaderText = "Student Courses";
                 return;
@@ -220,9 +291,16 @@ namespace WindowsFormsApp1.WUI {
             }
 
             dataGridView.Columns["ID"].Visible = false;
+
             if (dataGridView == ctrlStudents || dataGridView == ctrlProfessors) {
                 dataGridView.Columns["Age"].DisplayIndex = 3;
-                dataGridView.Columns["PersonCourses"].Visible = false;  
+                dataGridView.Columns["PersonCourses"].Visible = false;
+            }
+
+            if (dataGridView == ctrlCourses || dataGridView == ctrlSchedules) {
+                dataGridView.Columns["Subject"].DisplayIndex = 1;
+                dataGridView.Columns["Category"].DisplayIndex = 2;
+
             }
 
             if (dataGridView == ctrlStudents) {
@@ -230,33 +308,43 @@ namespace WindowsFormsApp1.WUI {
                 dataGridView.Columns["RegistrationNumber"].HeaderText = "Registration Number";
                 dataGridView.Columns["Name"].DisplayIndex = 1;
                 dataGridView.Columns["Surname"].DisplayIndex = 2;
-   
+
             }
             else if (dataGridView == ctrlProfessors) {
                 dataGridView.Columns["Name"].DisplayIndex = 0;
                 dataGridView.Columns["Surname"].DisplayIndex = 1;
                 dataGridView.Columns["Rank"].DisplayIndex = 2;
-                
+
             }
-            else {
+            else if (dataGridView == ctrlCourses) {
                 dataGridView.Columns["Code"].DisplayIndex = 0;
-                dataGridView.Columns["Subject"].DisplayIndex = 1;
-                dataGridView.Columns["Category"].DisplayIndex = 2;
                 dataGridView.Columns["Hours"].DisplayIndex = 3;
             }
+            else {
+                dataGridView.Columns["Date"].DisplayIndex = 0;
+                dataGridView.Columns["ProfessorName"].DisplayIndex = 3;
+                dataGridView.Columns["ProfessorName"].HeaderText = "Professor Name";
+                dataGridView.Columns["ProfessorSurname"].DisplayIndex = 4;
+                dataGridView.Columns["ProfessorSurname"].HeaderText = "Professor Surname";
+                dataGridView.Columns["StudentName"].DisplayIndex = 5;
+                dataGridView.Columns["StudentName"].HeaderText = "Student Name";
+                dataGridView.Columns["StudentSurname"].DisplayIndex = 6;
+                dataGridView.Columns["StudentSurname"].HeaderText = "Student Surname";
+            }
+
         }
 
         private void ctrlStudents_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-           ctrlStudents.ClearSelection();
+            ctrlStudents.ClearSelection();
         }
 
         private void ctrlStudents_SelectionChanged(object sender, EventArgs e) {
-            
+
             if (ctrlStudents.Focused) {
                 ctrlStudentCourses.DataSource = PopulateCoursesGrid(ctrlStudents);
                 AdjustGridView(ctrlStudentCourses);
             }
-            
+
         }
         private void ctrlProfessors_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             ctrlProfessors.ClearSelection();
@@ -272,24 +360,34 @@ namespace WindowsFormsApp1.WUI {
         private BindingSource PopulateCoursesGrid(DataGridView dataGridView) {
             BindingSource gridBindingSource = new BindingSource();
 
-            foreach (DataGridViewRow row in dataGridView.SelectedRows) {
-                List<CoursesCategoryEnum> selectedCourses = row.Cells["PersonCourses"].Value as List<CoursesCategoryEnum>;
-                ICollection<string> coursesList = new List<string>();
+            List<CoursesCategoryEnum> selectedCourses = dataGridView.SelectedRows[0].Cells["PersonCourses"].Value as List<CoursesCategoryEnum>;
+            ICollection<string> coursesList = new List<string>();
 
-                if (selectedCourses == null) return null;
-                else {
-                    for (int i = 0; i < selectedCourses.Count(); i++) {
-                        coursesList.Add(selectedCourses.GetType().GetProperty("Item").GetValue(selectedCourses, new Object[] { i }).ToString());
-                    }
+            if (selectedCourses == null) return null;
+            else {
+                for (int i = 0; i < selectedCourses.Count(); i++) {
+                    coursesList.Add(selectedCourses.GetType().GetProperty("Item").GetValue(selectedCourses, new Object[] { i }).ToString());
                 }
                 gridBindingSource.DataSource = coursesList.Select(x => new { Courses = x }).ToList();
-                
-                
+
+                return gridBindingSource;
             }
-            return gridBindingSource;
+
         }
 
-       
+        private void btnRemove_Click(object sender, EventArgs e) {
+            RemoveSelectedRecord();
+        }
+
+        private void RemoveSelectedRecord() {
+
+            Guid selectedScheduleID = (Guid)ctrlSchedules.SelectedRows[0].Cells["ID"].Value;
+            ViewData.Schedules.Remove(ViewData.Schedules.First(x => x.ID == selectedScheduleID));
+            if (ViewData.Schedules.Count() > 0)
+                LoadDataIntoGrid<Schedule>();
+            else
+                ctrlSchedules.DataSource = null;
+        }
     }
 
 }

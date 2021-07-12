@@ -87,10 +87,11 @@ namespace WindowsFormsApp1.WUI {
             this.btnRemove.TabIndex = 9;
             this.btnRemove.Text = "Remove Selected";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.dateTimePicker.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker.Location = new System.Drawing.Point(196, 484);
@@ -138,8 +139,6 @@ namespace WindowsFormsApp1.WUI {
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1224, 28);
@@ -211,7 +210,7 @@ namespace WindowsFormsApp1.WUI {
             // 
             this.lblStudent.AutoSize = true;
             this.lblStudent.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblStudent.Location = new System.Drawing.Point(425, 144);
+            this.lblStudent.Location = new System.Drawing.Point(386, 144);
             this.lblStudent.Name = "lblStudent";
             this.lblStudent.Size = new System.Drawing.Size(135, 23);
             this.lblStudent.TabIndex = 17;
@@ -241,6 +240,7 @@ namespace WindowsFormsApp1.WUI {
             // 
             this.ctrlCourses.AllowUserToAddRows = false;
             this.ctrlCourses.AllowUserToOrderColumns = true;
+            this.ctrlCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ctrlCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlCourses.Location = new System.Drawing.Point(24, 185);
             this.ctrlCourses.MultiSelect = false;
@@ -249,7 +249,7 @@ namespace WindowsFormsApp1.WUI {
             this.ctrlCourses.RowHeadersWidth = 51;
             this.ctrlCourses.RowTemplate.Height = 24;
             this.ctrlCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ctrlCourses.Size = new System.Drawing.Size(364, 244);
+            this.ctrlCourses.Size = new System.Drawing.Size(346, 244);
             this.ctrlCourses.TabIndex = 21;
             // 
             // ctrlStudents
@@ -257,15 +257,16 @@ namespace WindowsFormsApp1.WUI {
             this.ctrlStudents.AllowUserToAddRows = false;
             this.ctrlStudents.AllowUserToDeleteRows = false;
             this.ctrlStudents.AllowUserToOrderColumns = true;
+            this.ctrlStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ctrlStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ctrlStudents.Location = new System.Drawing.Point(415, 185);
+            this.ctrlStudents.Location = new System.Drawing.Point(390, 185);
             this.ctrlStudents.MultiSelect = false;
             this.ctrlStudents.Name = "ctrlStudents";
             this.ctrlStudents.ReadOnly = true;
             this.ctrlStudents.RowHeadersWidth = 51;
             this.ctrlStudents.RowTemplate.Height = 24;
             this.ctrlStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ctrlStudents.Size = new System.Drawing.Size(352, 244);
+            this.ctrlStudents.Size = new System.Drawing.Size(377, 244);
             this.ctrlStudents.TabIndex = 22;
             this.ctrlStudents.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ctrlStudents_DataBindingComplete);
             this.ctrlStudents.SelectionChanged += new System.EventHandler(this.ctrlStudents_SelectionChanged);
@@ -274,6 +275,7 @@ namespace WindowsFormsApp1.WUI {
             // 
             this.ctrlProfessors.AllowUserToAddRows = false;
             this.ctrlProfessors.AllowUserToOrderColumns = true;
+            this.ctrlProfessors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ctrlProfessors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlProfessors.Location = new System.Drawing.Point(792, 185);
             this.ctrlProfessors.MultiSelect = false;
@@ -289,9 +291,14 @@ namespace WindowsFormsApp1.WUI {
             // 
             // ctrlSchedules
             // 
+            this.ctrlSchedules.AllowUserToAddRows = false;
+            this.ctrlSchedules.AllowUserToDeleteRows = false;
+            this.ctrlSchedules.AllowUserToOrderColumns = true;
             this.ctrlSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctrlSchedules.Location = new System.Drawing.Point(22, 584);
+            this.ctrlSchedules.MultiSelect = false;
             this.ctrlSchedules.Name = "ctrlSchedules";
+            this.ctrlSchedules.ReadOnly = true;
             this.ctrlSchedules.RowHeadersWidth = 51;
             this.ctrlSchedules.RowTemplate.Height = 24;
             this.ctrlSchedules.Size = new System.Drawing.Size(1118, 180);

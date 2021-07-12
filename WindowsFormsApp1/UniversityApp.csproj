@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -62,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine.cs" />
     <Compile Include="WUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +107,9 @@
       <Project>{e41d588e-a6b6-4edb-92b6-6fc68f29460b}</Project>
       <Name>UniversityApp.Storage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Errors\DuplicateRecordErrorString.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

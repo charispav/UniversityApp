@@ -59,5 +59,14 @@ namespace WindowsFormsApp1.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: Duplicate Record!.
+        /// </summary>
+        internal static string DuplicateRecordErrorString {
+            get {
+                return ResourceManager.GetString("DuplicateRecordErrorString", resourceCulture);
+            }
+        }
     }
 }
