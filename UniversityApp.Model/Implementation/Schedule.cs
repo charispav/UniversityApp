@@ -2,7 +2,7 @@
 using UniversityApp.Model.Base;
 
 namespace UniversityApp.Model {
-    public class Schedule : Entity {
+    public sealed class Schedule : Entity {
 
         public Guid StudentID { get; set; }
         public Guid ProfessorID { get; set; }
@@ -12,6 +12,7 @@ namespace UniversityApp.Model {
         public Schedule() : base() {
                 
         }
+
     }
 
 }

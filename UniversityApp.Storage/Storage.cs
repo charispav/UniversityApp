@@ -15,9 +15,7 @@ namespace UniversityApp.Storage {
         public static T DeserializeFromJSON() {
 
             JavaScriptSerializer loadSerializer = Serializer();
-
             return loadSerializer.Deserialize<T>(File.ReadAllText($"{typeof(T).Name}Data.json"));
-            
         }
 
         private static JavaScriptSerializer Serializer() {

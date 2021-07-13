@@ -1,0 +1,1 @@
+﻿Invalid Entry: This professor already teaches four courses for the given day!

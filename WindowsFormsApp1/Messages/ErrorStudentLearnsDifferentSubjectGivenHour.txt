@@ -1,0 +1,1 @@
+﻿Invalid Entry: This student already attains a subject for the given hour!

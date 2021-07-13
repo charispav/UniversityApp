@@ -1,0 +1,1 @@
+﻿Invalid Entry: Same Professor and Student for this hour is given!

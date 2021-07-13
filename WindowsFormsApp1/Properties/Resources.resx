@@ -118,7 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DuplicateRecordErrorString" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\errors\duplicaterecorderrorstring.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="ErrorDataReading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errordatareading.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorDataWriting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errordatawriting.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorDuplicateRecord" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorduplicaterecord.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorNoCourseSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errornocourseselected.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorNoProfessorSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errornoprofessorselected.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorNoRecordSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errornorecordselected.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorNoStudentSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errornostudentselected.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorProfessorCannotTeachCourse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorprofessorcannotteachcourse.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorProfessorMaxFourCoursesPerDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorprofessormaxfourcoursesperday.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorProfessorMaxFourtyCoursesPerWeek" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorprofessormaxfourtycoursesperweek.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorProfessorTeachesDifferentSubjectGivenHour" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorprofessorteachesdifferentsubjectgivenhour.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorSameStudentAndProfessor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorsamestudentandprofessor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorStudentCannotLearnCourse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorstudentcannotlearncourse.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorStudentLearnsDifferentSubjectGivenHour" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorstudentlearnsdifferentsubjectgivenhour.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ErrorStudentMaxThreeCoursesPerDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\errorstudentmaxthreecoursesperday.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>picture.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SaveChanges" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\savechanges.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ScheduleUpdatedSuccessfully" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\scheduleupdatedsuccessfully.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="WarningNoScheduleDataToLoad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\messages\warningnoscheduledatatoload.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

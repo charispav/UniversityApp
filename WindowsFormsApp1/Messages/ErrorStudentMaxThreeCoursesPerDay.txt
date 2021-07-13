@@ -1,0 +1,1 @@
+﻿Invalid Entry: This student already attains three courses for the given day!

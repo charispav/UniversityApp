@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsFormsApp1.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,174 @@ namespace WindowsFormsApp1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error with data reading!.
+        /// </summary>
+        public static string ErrorDataReading {
+            get {
+                return ResourceManager.GetString("ErrorDataReading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error with data writing!.
+        /// </summary>
+        public static string ErrorDataWriting {
+            get {
+                return ResourceManager.GetString("ErrorDataWriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Entry: Duplicate Record!.
         /// </summary>
-        internal static string DuplicateRecordErrorString {
+        public static string ErrorDuplicateRecord {
             get {
-                return ResourceManager.GetString("DuplicateRecordErrorString", resourceCulture);
+                return ResourceManager.GetString("ErrorDuplicateRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No course selected!.
+        /// </summary>
+        public static string ErrorNoCourseSelected {
+            get {
+                return ResourceManager.GetString("ErrorNoCourseSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No professor selected!.
+        /// </summary>
+        public static string ErrorNoProfessorSelected {
+            get {
+                return ResourceManager.GetString("ErrorNoProfessorSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No record selected!.
+        /// </summary>
+        public static string ErrorNoRecordSelected {
+            get {
+                return ResourceManager.GetString("ErrorNoRecordSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No student selected!.
+        /// </summary>
+        public static string ErrorNoStudentSelected {
+            get {
+                return ResourceManager.GetString("ErrorNoStudentSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This professor cannot teach this course!.
+        /// </summary>
+        public static string ErrorProfessorCannotTeachCourse {
+            get {
+                return ResourceManager.GetString("ErrorProfessorCannotTeachCourse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This professor already teaches four courses for the given day!.
+        /// </summary>
+        public static string ErrorProfessorMaxFourCoursesPerDay {
+            get {
+                return ResourceManager.GetString("ErrorProfessorMaxFourCoursesPerDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This professor already teaches fourty courses for this week!.
+        /// </summary>
+        public static string ErrorProfessorMaxFourtyCoursesPerWeek {
+            get {
+                return ResourceManager.GetString("ErrorProfessorMaxFourtyCoursesPerWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This professor already teaches a subject for the given hour!.
+        /// </summary>
+        public static string ErrorProfessorTeachesDifferentSubjectGivenHour {
+            get {
+                return ResourceManager.GetString("ErrorProfessorTeachesDifferentSubjectGivenHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: Same Professor and Student for this hour is given!.
+        /// </summary>
+        public static string ErrorSameStudentAndProfessor {
+            get {
+                return ResourceManager.GetString("ErrorSameStudentAndProfessor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This student cannot learn this course!.
+        /// </summary>
+        public static string ErrorStudentCannotLearnCourse {
+            get {
+                return ResourceManager.GetString("ErrorStudentCannotLearnCourse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This student already attains a subject for the given hour!.
+        /// </summary>
+        public static string ErrorStudentLearnsDifferentSubjectGivenHour {
+            get {
+                return ResourceManager.GetString("ErrorStudentLearnsDifferentSubjectGivenHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Entry: This student already attains three courses for the given day!.
+        /// </summary>
+        public static string ErrorStudentMaxThreeCoursesPerDay {
+            get {
+                return ResourceManager.GetString("ErrorStudentMaxThreeCoursesPerDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon Picture {
+            get {
+                object obj = ResourceManager.GetObject("Picture", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to save your changes?.
+        /// </summary>
+        public static string SaveChanges {
+            get {
+                return ResourceManager.GetString("SaveChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule updated successfully!.
+        /// </summary>
+        public static string ScheduleUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("ScheduleUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Schedule Data to Load!.
+        /// </summary>
+        public static string WarningNoScheduleDataToLoad {
+            get {
+                return ResourceManager.GetString("WarningNoScheduleDataToLoad", resourceCulture);
             }
         }
     }

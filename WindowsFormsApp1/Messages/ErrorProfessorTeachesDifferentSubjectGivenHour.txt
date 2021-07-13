@@ -1,0 +1,1 @@
+﻿Invalid Entry: This professor already teaches a subject for the given hour!

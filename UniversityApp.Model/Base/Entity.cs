@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace UniversityApp.Model.Base {
     public abstract class Entity {
+
         public Guid ID { get; set; }
+
         public Entity() {
             ID = Guid.NewGuid();
         }
 
     }
+
 }

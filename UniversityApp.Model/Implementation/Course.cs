@@ -2,7 +2,7 @@
 using UniversityApp.Model.Base;
 
 namespace UniversityApp.Model {
-    public class Course : Entity {
+    public sealed class Course : Entity {
         
         public string Code { get; set; }
         public string Subject { get; set; }

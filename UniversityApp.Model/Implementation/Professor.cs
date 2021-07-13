@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UniversityApp.Model.Base;
 
 namespace UniversityApp.Model {
-    public class Professor : Person {
+    public sealed class Professor : Person {
         
         public short Age { get; set; }
         public string Rank { get; set; }
@@ -15,5 +15,6 @@ namespace UniversityApp.Model {
         public Professor() : base() {
            
         }
+
     }
 }
